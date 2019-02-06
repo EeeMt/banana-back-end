@@ -24,6 +24,7 @@ public class ArticleController {
     @GetMapping("/{id}")
     public Result<ArticleDO> findById(@PathVariable Long id) {
         ArticleDO find = articleService.findById(id).orElseThrow(() -> new RequestUnacceptableException("Article not found!"));
+
         return new Result<>(find);
     }
 

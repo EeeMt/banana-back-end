@@ -49,21 +49,21 @@ public class ArticleDO {
     @ManyToMany(fetch = FetchType.LAZY)
     @Cascade({CascadeType.SAVE_UPDATE})
     @JoinTable(name = "category_article", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private List<CategoryDO> categoryDO;
+    private List<CategoryDO> categories;
     /**
      * 标签
      */
     @ManyToMany(fetch = FetchType.LAZY)
     @Cascade({CascadeType.SAVE_UPDATE})
     @JoinTable(name = "tag_article", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<TagDO> tagDOS;
+    private List<TagDO> tags;
 
     /**
      * 评论
      */
-    @OneToMany(mappedBy = "articleDO", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)
-    private List<CommentDO> commentDOS;
+    private List<CommentDO> comments;
 
     /**
      * 是否发布

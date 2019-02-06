@@ -35,6 +35,6 @@ public class CommentDO {
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)
-    @JoinColumn(name = "article_id")
-    private ArticleDO articleDO;
+    @JoinColumn(name = "article_id", nullable = false)
+    private ArticleDO article;
 }

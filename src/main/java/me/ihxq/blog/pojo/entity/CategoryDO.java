@@ -27,5 +27,5 @@ public class CategoryDO {
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "category_article", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "article_id"))
-    private List<ArticleDO> articleDOS;
+    private List<ArticleDO> articleS;
 }

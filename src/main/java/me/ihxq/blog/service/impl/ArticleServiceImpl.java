@@ -80,11 +80,11 @@ public class ArticleServiceImpl implements ArticleService {
             List<CategoryDO> categoryDOList = articleDTO.getCategoriesId().stream()
                     .map(categoryId -> categoryService.findById(categoryId))
                     .collect(Collectors.toList());
-            articleDO.setCategoryDO(categoryDOList);
+            articleDO.setCategories(categoryDOList);
             List<TagDO> tagDOList = articleDTO.getTagsId().stream()
                     .map(tagId -> tagService.findById(tagId))
                     .collect(Collectors.toList());
-            articleDO.setTagDOS(tagDOList);
+            articleDO.setTags(tagDOList);
             return articleDO;
         }
     }

@@ -29,6 +29,6 @@ public class TagDO {
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "tag_article", joinColumns = @JoinColumn(name = "tag_id"), inverseJoinColumns = @JoinColumn(name = "article_id"))
-    private List<ArticleDO> articleDOS;
+    private List<ArticleDO> articleS;
 
 }
