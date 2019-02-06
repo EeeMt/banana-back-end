@@ -5,6 +5,7 @@ import me.ihxq.blog.pojo.entity.ArticleDO;
 import me.ihxq.blog.pojo.payload.ArticleDTO;
 import me.ihxq.blog.pojo.payload.Result;
 import me.ihxq.blog.service.ArticleService;
+import me.ihxq.blog.service.MetricService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -21,10 +22,13 @@ public class ArticleController {
     @Resource
     private ArticleService articleService;
 
+    @Resource
+    private MetricService metricService;
+
     @GetMapping("/{id}")
     public Result<ArticleDO> findById(@PathVariable Long id) {
         ArticleDO find = articleService.findById(id).orElseThrow(() -> new RequestUnacceptableException("Article not found!"));
-
+        metricService.increasePV(id);
         return new Result<>(find);
     }
 

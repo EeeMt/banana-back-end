@@ -3,6 +3,7 @@ package me.ihxq.blog.pojo.entity;
 import lombok.Data;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import sun.rmi.runtime.Log;
 
 import javax.persistence.*;
 
@@ -19,9 +20,9 @@ public class MetricDO {
     @GeneratedValue
     private Long id;
 
-    private Long likes;
-    private Long dislikes;
-    private Long views;
+    private long likes;
+    private long dislikes;
+    private long pv;
 
     @OneToOne(optional = false, fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)

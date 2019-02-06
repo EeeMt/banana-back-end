@@ -2,12 +2,13 @@ package me.ihxq.blog.pojo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.hibernate.annotations.*;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.*;
 
-import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.List;
  */
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "article")
 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 public class ArticleDO {
@@ -100,6 +102,10 @@ public class ArticleDO {
     @NotNull
     @UpdateTimestamp
     private LocalDateTime updateTime;
+
+    public ArticleDO(long id) {
+        this.id = id;
+    }
 
     @PreUpdate
     public void preUpdate() {
