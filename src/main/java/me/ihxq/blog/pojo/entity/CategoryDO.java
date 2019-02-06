@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Entity
 @Data
-@Table(name = "categoryDO")
+@Table(name = "category")
 public class CategoryDO {
     @Id
     @GeneratedValue

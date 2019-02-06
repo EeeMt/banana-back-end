@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Entity
 @Data
-@Table(name = "articleDO")
+@Table(name = "article")
 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 public class ArticleDO {
     @Id

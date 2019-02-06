@@ -23,7 +23,7 @@ public class ArticleController {
 
     @GetMapping("/{id}")
     public Result<ArticleDO> findById(@PathVariable Long id) {
-        ArticleDO find = articleService.findById(id).orElseThrow(() -> new RequestUnacceptableException("ArticleDO not found!"));
+        ArticleDO find = articleService.findById(id).orElseThrow(() -> new RequestUnacceptableException("Article not found!"));
         return new Result<>(find);
     }
 
@@ -36,7 +36,7 @@ public class ArticleController {
 
     @PutMapping("publish/{articleId}")
     public Result publish(@PathVariable Long articleId) {
-        ArticleDO articleDO = articleService.findById(articleId).orElseThrow(() -> new RequestUnacceptableException("ArticleDO not found!"));
+        ArticleDO articleDO = articleService.findById(articleId).orElseThrow(() -> new RequestUnacceptableException("Article not found!"));
         articleDO.setPublished(true);
         articleDO.setPublishTime(LocalDateTime.now());
         articleService.save(articleDO);

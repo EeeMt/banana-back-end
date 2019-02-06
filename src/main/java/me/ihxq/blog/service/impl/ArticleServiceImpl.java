@@ -51,7 +51,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void del(Long articleId) {
-        ArticleDO repositoryOne = articleRepository.findById(articleId).orElseThrow(() -> new RequestUnacceptableException("ArticleDO not found!"));
+        ArticleDO repositoryOne = articleRepository.findById(articleId).orElseThrow(() -> new RequestUnacceptableException("Article not found!"));
         repositoryOne.setDelFlag(true);
         repositoryOne.setDelTime(LocalDateTime.now());
         articleRepository.save(repositoryOne);
