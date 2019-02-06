@@ -1,4 +1,4 @@
-package me.ihxq.blog.service.utils;
+package me.ihxq.blog.utils;
 
 import java.util.regex.Pattern;
 

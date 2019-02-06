@@ -3,6 +3,7 @@ package me.ihxq.blog.service;
 
 import me.ihxq.blog.model.Article;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * author: HuangXiquan <br/>
@@ -11,21 +12,10 @@ import org.springframework.data.domain.Page;
  * description:
  */
 public interface ArticleService {
-    /**
-     * 分页查询
-     *
-     * @param page 页码
-     * @param size 页面大小
-     */
-    Page<Article> query(int page, int size);
 
-    /**
-     * 保存或者更新
-     *
-     * @param article 文章实体
-     */
-    void saveOrUpdate(Article article);
+    void save(Article article);
 
+    Page<Article> query(Pageable pageable);
     /**
      * 逻辑删除
      *
@@ -33,5 +23,5 @@ public interface ArticleService {
      */
     void del(Long articleId);
 
-    Article detail(Long articleId);
+    Article find(Long articleId);
 }

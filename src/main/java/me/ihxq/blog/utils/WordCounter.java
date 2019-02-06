@@ -1,4 +1,4 @@
-package me.ihxq.blog.service.utils;
+package me.ihxq.blog.utils;
 
 public interface WordCounter {
     default int countText(String text){

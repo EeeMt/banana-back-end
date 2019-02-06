@@ -9,15 +9,15 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
  * time: 19:24 <br/>
  * description:
  */
-public class DeerException extends Exception {
+public class GeneralException extends RuntimeException {
 
     private String message;
 
-    public DeerException() {
+    public GeneralException() {
         super();
     }
 
-    public DeerException(String message) {
+    public GeneralException(String message) {
         super(message);
     }
 
@@ -26,12 +26,12 @@ public class DeerException extends Exception {
         return this.message;
     }
 
-    public DeerException(String format, Object... params) {
+    public GeneralException(String format, Object... params) {
         super(format);
         this.message = formatMessage(format, params);
     }
 
-    public DeerException(String message, Throwable cause) {
+    public GeneralException(String message, Throwable cause) {
         super(message, cause);
     }
 
