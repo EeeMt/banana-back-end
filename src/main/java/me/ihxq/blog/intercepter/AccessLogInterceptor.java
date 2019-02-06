@@ -29,11 +29,17 @@ public class AccessLogInterceptor extends HandlerInterceptorAdapter {
     private AccessLogDO extractAccessLog(HttpServletRequest request) {
         String ipAddress = this.extractIp(request);
         String requestUri = this.extractUri(request);
+        String requestMethod = this.extractRequestMethod(request);
         AccessLogDO accessLogDO = new AccessLogDO();
         accessLogDO.setIp(ipAddress);
+        accessLogDO.setRequestMethod(requestMethod);
         accessLogDO.setAccessUrl(requestUri);
         accessLogDO.setAccessTime(LocalDateTime.now());
         return accessLogDO;
+    }
+
+    private String extractRequestMethod(HttpServletRequest request) {
+        return request.getMethod();
     }
 
     private String extractUri(HttpServletRequest request) {

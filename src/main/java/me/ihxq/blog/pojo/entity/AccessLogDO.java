@@ -22,6 +22,9 @@ public class AccessLogDO {
     private String ip;
 
     @NotNull
+    private String requestMethod;
+
+    @NotNull
     private String accessUrl;
 
     @NotNull
