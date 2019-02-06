@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 @Data
 public class Result<T> implements Serializable {
-    private int status;
+    private int status = 200;
     private T data;
     private String message;
 
