@@ -1,6 +1,7 @@
 package me.ihxq.blog.pojo.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -15,12 +16,13 @@ import java.util.List;
  */
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "category")
 public class CategoryDO {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer id;
+    private Long id;
     @NotNull
     private String name;
 
@@ -28,4 +30,8 @@ public class CategoryDO {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(name = "category_article", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "article_id"))
     private List<ArticleDO> articleS;
+
+    public CategoryDO(long id) {
+        this.id = id;
+    }
 }

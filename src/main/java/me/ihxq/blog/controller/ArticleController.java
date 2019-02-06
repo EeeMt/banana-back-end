@@ -1,5 +1,6 @@
 package me.ihxq.blog.controller;
 
+import me.ihxq.blog.service.DomainConvertService;
 import me.ihxq.blog.exception.RequestUnacceptableException;
 import me.ihxq.blog.pojo.entity.ArticleDO;
 import me.ihxq.blog.pojo.payload.ArticleDTO;
@@ -25,6 +26,9 @@ public class ArticleController {
     @Resource
     private MetricService metricService;
 
+    @Resource
+    private DomainConvertService domainConvertService;
+
     @GetMapping("/{id}")
     public Result<ArticleDO> findById(@PathVariable Long id) {
         ArticleDO find = articleService.findById(id).orElseThrow(() -> new RequestUnacceptableException("Article not found!"));
@@ -34,7 +38,7 @@ public class ArticleController {
 
     @PostMapping
     public Result save(@RequestBody ArticleDTO articleDTO) {
-        ArticleDO articleDO = articleService.convertToDO(articleDTO);
+        ArticleDO articleDO = domainConvertService.convert(articleDTO, ArticleDO.class);
         articleService.save(articleDO);
         return new Result();
     }

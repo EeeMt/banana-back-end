@@ -62,30 +62,4 @@ public class ArticleServiceImpl implements ArticleService {
         return articleRepository.findById(articleId);
     }
 
-    @Override
-    public ArticleDO convertToDO(ArticleDTO articleDTO) {
-        if (articleDTO == null) {
-            return null;
-        } else {
-            ArticleDO articleDO = new ArticleDO();
-            articleDO.setTitle(articleDTO.getTitle());
-            articleDO.setIntro(articleDTO.getIntro());
-            articleDO.setContent(articleDTO.getContent());
-            articleDO.setDelFlag(false);
-            articleDO.setDelTime(null);
-            articleDO.setPublished(false);
-            articleDO.setPublishTime(null);
-            articleDO.setCreateTime(LocalDateTime.now());
-            articleDO.setUpdateTime(LocalDateTime.now());
-            List<CategoryDO> categoryDOList = articleDTO.getCategoriesId().stream()
-                    .map(categoryId -> categoryService.findById(categoryId))
-                    .collect(Collectors.toList());
-            articleDO.setCategories(categoryDOList);
-            List<TagDO> tagDOList = articleDTO.getTagsId().stream()
-                    .map(tagId -> tagService.findById(tagId))
-                    .collect(Collectors.toList());
-            articleDO.setTags(tagDOList);
-            return articleDO;
-        }
-    }
 }

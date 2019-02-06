@@ -61,14 +61,4 @@ public class MetricServiceImpl implements MetricService {
             return metric;
         });
     }
-
-    @Override
-    public MetricVO convert(MetricDO metricDO) {
-        MetricVO metricVO = new MetricVO();
-        metricVO.setPv(metricDO.getPv());
-        metricVO.setLikes(metricDO.getLikes());
-        metricVO.setDislikes(metricDO.getDislikes());
-        metricVO.setArticleId(metricDO.getArticle().getId());
-        return metricVO;
-    }
 }

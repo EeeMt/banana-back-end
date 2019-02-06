@@ -20,5 +20,4 @@ public interface MetricService {
 
     MetricDO findById(long articleId);
 
-    MetricVO convert(MetricDO metricDO);
 }

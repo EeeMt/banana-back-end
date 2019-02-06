@@ -24,5 +24,4 @@ public interface ArticleService {
 
     Optional<ArticleDO> findById(Long articleId);
 
-    ArticleDO convertToDO(ArticleDTO articleDTO);
 }

@@ -1,5 +1,6 @@
 package me.ihxq.blog.controller;
 
+import me.ihxq.blog.service.DomainConvertService;
 import me.ihxq.blog.pojo.entity.MetricDO;
 import me.ihxq.blog.pojo.payload.MetricVO;
 import me.ihxq.blog.pojo.payload.Result;
@@ -16,6 +17,8 @@ import javax.annotation.Resource;
 @RequestMapping("metric")
 public class MetricController {
 
+    @Resource
+    private DomainConvertService domainConvertService;
 
     @Resource
     private MetricService metricService;
@@ -35,7 +38,7 @@ public class MetricController {
     @GetMapping("{articleId}")
     public Result<MetricVO> findById(@PathVariable long articleId) {
         MetricDO find = metricService.findById(articleId);
-        MetricVO convert = metricService.convert(find);
+        MetricVO convert = domainConvertService.convert(find, MetricVO.class);
         return new Result<>(convert);
     }
 
