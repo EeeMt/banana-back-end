@@ -1,6 +1,6 @@
 package me.ihxq.blog.intercepter;
 
-import me.ihxq.blog.model.AccessLog;
+import me.ihxq.blog.pojo.entity.AccessLogDO;
 import me.ihxq.blog.service.AccessLogService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -17,13 +17,13 @@ public class AccessLogRecord extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        AccessLog accessLog = this.extractAccessLog(request);
-        accessLogService.save(accessLog);
+        AccessLogDO accessLogDO = this.extractAccessLog(request);
+        accessLogService.save(accessLogDO);
 
         return super.preHandle(request, response, handler);
     }
 
-    private AccessLog extractAccessLog(HttpServletRequest request) {
+    private AccessLogDO extractAccessLog(HttpServletRequest request) {
         return null;
     }
 }

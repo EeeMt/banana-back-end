@@ -1,13 +1,14 @@
 package me.ihxq.blog.controller;
 
-import me.ihxq.blog.model.Article;
-import me.ihxq.blog.repository.ArticleRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import me.ihxq.blog.exception.RequestUnacceptableException;
+import me.ihxq.blog.pojo.entity.ArticleDO;
+import me.ihxq.blog.pojo.payload.ArticleDTO;
+import me.ihxq.blog.pojo.payload.Result;
+import me.ihxq.blog.service.ArticleService;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.Optional;
+import java.time.LocalDateTime;
 
 /**
  * @author xq.h
@@ -16,18 +17,36 @@ import java.util.Optional;
 @RestController
 @RequestMapping("article")
 public class ArticleController {
+
     @Resource
-    private ArticleRepository articleRepository;
+    private ArticleService articleService;
 
-
-    @GetMapping("2")
-    public String test2() {
-        return "hello2";
+    @GetMapping("/{id}")
+    public Result<ArticleDO> findById(@PathVariable Long id) {
+        ArticleDO find = articleService.findById(id).orElseThrow(() -> new RequestUnacceptableException("ArticleDO not found!"));
+        return new Result<>(find);
     }
 
-    @GetMapping()
-    public Optional<Article> test3() {
-        return articleRepository.findById(1L);
+    @PostMapping
+    public Result save(@RequestBody ArticleDTO articleDTO) {
+        ArticleDO articleDO = articleService.convertToDO(articleDTO);
+        articleService.save(articleDO);
+        return new Result();
+    }
+
+    @PutMapping("publish/{articleId}")
+    public Result publish(@PathVariable Long articleId) {
+        ArticleDO articleDO = articleService.findById(articleId).orElseThrow(() -> new RequestUnacceptableException("ArticleDO not found!"));
+        articleDO.setPublished(true);
+        articleDO.setPublishTime(LocalDateTime.now());
+        articleService.save(articleDO);
+        return new Result();
+    }
+
+    @DeleteMapping("/{id}")
+    public Result delById(@PathVariable Long id) {
+        articleService.del(id);
+        return new Result();
     }
 
 }

@@ -6,7 +6,7 @@ package me.ihxq.blog.exception;
  * time: 23:03 <br/>
  * description:
  */
-public class RequestUnacceptableException extends Exception{
+public class RequestUnacceptableException extends RuntimeException {
     public RequestUnacceptableException() {
         super();
     }

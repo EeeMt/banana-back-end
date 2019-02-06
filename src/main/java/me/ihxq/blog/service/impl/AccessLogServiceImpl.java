@@ -1,6 +1,6 @@
 package me.ihxq.blog.service.impl;
 
-import me.ihxq.blog.model.AccessLog;
+import me.ihxq.blog.pojo.entity.AccessLogDO;
 import me.ihxq.blog.service.AccessLogService;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +14,12 @@ import java.util.List;
 @Service
 public class AccessLogServiceImpl implements AccessLogService {
     @Override
-    public void save(AccessLog accessLog) {
+    public void save(AccessLogDO accessLogDO) {
 
     }
 
     @Override
-    public List<AccessLog> query(Pageable pageable) {
+    public List<AccessLogDO> query(Pageable pageable) {
         return null;
     }
 }

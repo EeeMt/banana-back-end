@@ -1,6 +1,6 @@
 package me.ihxq.blog.service;
 
-import me.ihxq.blog.model.AccessLog;
+import me.ihxq.blog.pojo.entity.AccessLogDO;
 
 import java.awt.print.Pageable;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  **/
 public interface AccessLogService {
 
-    void save(AccessLog accessLog);
+    void save(AccessLogDO accessLogDO);
 
-    List<AccessLog> query(Pageable pageable);
+    List<AccessLogDO> query(Pageable pageable);
 }

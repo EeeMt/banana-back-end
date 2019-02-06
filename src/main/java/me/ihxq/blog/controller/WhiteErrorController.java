@@ -1,6 +1,6 @@
 package me.ihxq.blog.controller;
 
-import me.ihxq.blog.payload.Result;
+import me.ihxq.blog.pojo.payload.Result;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,7 @@
 package me.ihxq.blog.controller;
 
-import me.ihxq.blog.model.Article;
-import me.ihxq.blog.payload.Result;
+import me.ihxq.blog.pojo.entity.ArticleDO;
+import me.ihxq.blog.pojo.payload.Result;
 import me.ihxq.blog.service.ArticleService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,11 +26,11 @@ public class IndexController {
     private ArticleService articleService;
 
     @GetMapping({"", "home"})
-    public Result<Page<Article>> hello(Pageable pageable) {
+    public Result<Page<ArticleDO>> hello(Pageable pageable) {
         if (pageable == null) {
             pageable = PageRequest.of(0, 10);
         }
-        Page<Article> articlePage = articleService.query(pageable);
+        Page<ArticleDO> articlePage = articleService.query(pageable);
         return new Result<>(articlePage);
     }
 

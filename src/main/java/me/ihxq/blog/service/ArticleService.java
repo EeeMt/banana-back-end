@@ -1,9 +1,12 @@
 package me.ihxq.blog.service;
 
 
-import me.ihxq.blog.model.Article;
+import me.ihxq.blog.pojo.entity.ArticleDO;
+import me.ihxq.blog.pojo.payload.ArticleDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.Optional;
 
 /**
  * author: HuangXiquan <br/>
@@ -13,15 +16,13 @@ import org.springframework.data.domain.Pageable;
  */
 public interface ArticleService {
 
-    void save(Article article);
+    void save(ArticleDO articleDO);
 
-    Page<Article> query(Pageable pageable);
-    /**
-     * 逻辑删除
-     *
-     * @param articleId 文章id
-     */
+    Page<ArticleDO> query(Pageable pageable);
+
     void del(Long articleId);
 
-    Article find(Long articleId);
+    Optional<ArticleDO> findById(Long articleId);
+
+    ArticleDO convertToDO(ArticleDTO articleDTO);
 }

@@ -1,7 +1,7 @@
 package me.ihxq.blog.repository;
 
 
-import me.ihxq.blog.model.Category;
+import me.ihxq.blog.pojo.entity.CategoryDO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -10,5 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * time: 19:14 <br/>
  * description:
  */
-public interface CategoryRepository extends JpaRepository<Category, Integer> {
+public interface CategoryRepository extends JpaRepository<CategoryDO, Integer> {
 }

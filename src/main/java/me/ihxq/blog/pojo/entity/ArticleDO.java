@@ -1,15 +1,14 @@
-package me.ihxq.blog.model;
+package me.ihxq.blog.pojo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.*;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -21,9 +20,9 @@ import java.util.List;
  */
 @Entity
 @Data
-@Table(name = "article")
+@Table(name = "articleDO")
 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-public class Article {
+public class ArticleDO {
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -42,7 +41,6 @@ public class Article {
     /**
      * 文章简介
      */
-    @Null
     private String intro;
 
     /**
@@ -51,26 +49,21 @@ public class Article {
     @ManyToMany(fetch = FetchType.LAZY)
     @Cascade({CascadeType.SAVE_UPDATE})
     @JoinTable(name = "category_article", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private List<Category> category;
+    private List<CategoryDO> categoryDO;
     /**
      * 标签
      */
     @ManyToMany(fetch = FetchType.LAZY)
     @Cascade({CascadeType.SAVE_UPDATE})
     @JoinTable(name = "tag_article", joinColumns = @JoinColumn(name = "article_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<Tag> tags;
+    private List<TagDO> tagDOS;
 
-    /**
-     * 允许评论
-     */
-    @NotNull
-    private boolean allowComment;
     /**
      * 评论
      */
-    @OneToMany(mappedBy = "article", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "articleDO", fetch = FetchType.LAZY)
     @Cascade(CascadeType.SAVE_UPDATE)
-    private List<Comment> comments;
+    private List<CommentDO> commentDOS;
 
     /**
      * 是否发布
@@ -80,7 +73,6 @@ public class Article {
     /**
      * 发布时间
      */
-    @Null
     private LocalDateTime publishTime;
 
     /**
@@ -92,7 +84,6 @@ public class Article {
     /**
      * 删除日期
      */
-    @Null
     private LocalDateTime delTime;
 
     /**
@@ -107,6 +98,11 @@ public class Article {
      */
     @ColumnDefault("current_timestamp")
     @NotNull
+    @UpdateTimestamp
     private LocalDateTime updateTime;
 
+    @PreUpdate
+    public void preUpdate() {
+//        updateTime = LocalDateTime.now();
+    }
 }

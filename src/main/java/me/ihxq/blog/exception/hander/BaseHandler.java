@@ -1,7 +1,7 @@
 package me.ihxq.blog.exception.hander;
 
 import javassist.NotFoundException;
-import me.ihxq.blog.payload.Result;
+import me.ihxq.blog.pojo.payload.Result;
 import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

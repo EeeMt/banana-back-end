@@ -1,4 +1,4 @@
-package me.ihxq.blog.payload;
+package me.ihxq.blog.pojo.payload;
 
 import lombok.Data;
 import org.springframework.http.HttpStatus;

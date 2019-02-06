@@ -1,4 +1,4 @@
-package me.ihxq.blog.model;
+package me.ihxq.blog.pojo.entity;
 
 import lombok.Data;
 
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-public class AccessLog {
+public class AccessLogDO {
 
     @Id
     @GeneratedValue

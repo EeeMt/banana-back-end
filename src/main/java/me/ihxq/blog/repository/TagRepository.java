@@ -1,6 +1,6 @@
 package me.ihxq.blog.repository;
 
-import me.ihxq.blog.model.Tag;
+import me.ihxq.blog.pojo.entity.TagDO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * time: 19:15 <br/>
  * description:
  */
-public interface TagRepository extends JpaRepository<Tag, Integer> {
+public interface TagRepository extends JpaRepository<TagDO, Integer> {
 }
